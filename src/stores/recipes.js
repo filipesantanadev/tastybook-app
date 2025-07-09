@@ -6,7 +6,9 @@ import { ref } from "vue";
 export const useRecipeStore = defineStore("recipes", () => {
   // !! state -> propriedades reativas
   const recipeList = ref([]);
-  const myRecipeList = ref([]);
+  const recipeByName = ref([]);
+  const recipeById = ref([]);
+  // const myRecipeList = ref([]);
 
   // !! actions -> methods
   const getRecipesCategories = async () => {
@@ -15,7 +17,7 @@ export const useRecipeStore = defineStore("recipes", () => {
         "https://www.themealdb.com/api/json/v1/1/categories.php"
       );
       const categories = response.data.categories;
-      console.log(categories);
+      // console.log(categories);
       recipeList.value = categories;
     } catch (error) {
       console.error("Erro ao buscar receita:", error);
@@ -27,10 +29,21 @@ export const useRecipeStore = defineStore("recipes", () => {
       const response = await axios.get(
         `https://www.themealdb.com/api/json/v1/1/search.php?s=${name}`
       );
-      const recipe = response.data;
-      console.log(recipe);
+      const recipe = response.data.meals;
+      recipeByName.value = recipe;
+      // console.log("Aqui:", recipeByName.value);
+    } catch (error) {
+      console.log("Erro ao buscar receita:", error);
+    }
+  };
 
-      //myRecipeList.value = response.data.meals || [];
+  const getRecipeById = async (id) => {
+    // console.log("ID recebido:", id);
+    try {
+      const { data } = await axios.get(
+        `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`
+      );
+      recipeById.value = data.meals ? data.meals[0] : null;
     } catch (error) {
       console.log("Erro ao buscar receita:", error);
     }
@@ -40,7 +53,10 @@ export const useRecipeStore = defineStore("recipes", () => {
 
   return {
     recipeList,
+    recipeByName,
+    recipeById,
     getRecipesCategories,
     getRecipeByName,
+    getRecipeById,
   };
 });
