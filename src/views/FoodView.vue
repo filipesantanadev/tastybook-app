@@ -1,11 +1,20 @@
 <template>
-  <!-- <pre>{{ recipeStore.recipeById }}</pre> -->
-  <br />
-  <br />
-  <h1>{{ recipeStore.recipeById.strMeal }}</h1>
-  <h1>{{ recipeStore.recipeById.strCategory }}</h1>
-  <h1>{{ recipeStore.recipeById.strInstructions }}</h1>
-  <img :src="recipeStore.recipeById.strMealThumb" alt="" />
+  <div class="min-h-screen flex justify-center m-4 ">
+    <div class="w-full max-w-lg px-4 py-6 bg-white shadow-md">
+    <h1 class="font-bold text-3xl mb-4">
+      {{ recipeStore.recipeById.strMeal }}
+    </h1>
+    <img
+      class="w-full h-[200px] rounded"
+      :src="recipeStore.recipeById.strMealThumb"
+      alt="Food Photo"
+    />
+    <p class="text-sm mb-2">Categoria: {{ recipeStore.recipeById.strCategory }}</p>
+    <p class="text-sm mb-2">Area: {{ recipeStore.recipeById.strArea }}</p>
+    <p class="text-sm mb-2">Instructions: {{ recipeStore.recipeById.strInstructions }}</p>
+    <p class="text-sm mb-2">Youtube: {{ recipeStore.recipeById.strYoutube }}</p>
+    </div>
+  </div>
 </template>
 
 <script setup>

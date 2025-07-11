@@ -10,7 +10,7 @@ import FoodView from "../views/FoodView.vue";
 const routes = [
   { path: "/", name: "home", component: HomeView },
   { path: "/foods/:nameFood", name: "foods", component: FoodsView },
-  { path: "/food/:idFood", name: "food", component: FoodView },
+  // { path: "/food/:idFood", name: "food", component: FoodView },
   { path: "/about", name: "about", component: AboutView },
 ];
 

@@ -30,8 +30,7 @@
           Extras:
 
           PWA com Vite + Workbox para uso offline
-    </pre
-      >
+      </pre>
     </div>
   </div>
 </template>

@@ -10,7 +10,7 @@ import AppNavbar from "./components/AppNavbar.vue";
     <router-link to="/about">About</router-link> -->
   </section>
   <router-view></router-view>
-  <!-- <AppFooter /> -->
+  <AppFooter />
 </template>
 
-<style scoped></style>
+<style></style>

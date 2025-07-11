@@ -12,7 +12,7 @@
       :foodList="recipeStore.recipeList"
       imageFood="strCategoryThumb"
       nameFood="strCategory"
-      descriptionFood="strCategoryDescription"
+      otherInformationFood="strCategoryDescription"
     />
   </section>
 </template>

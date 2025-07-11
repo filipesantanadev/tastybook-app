@@ -3,8 +3,7 @@
     <div class="flex justify-center">
       <router-link to="/">
         <h1 class="text-4xl font-bold text-gray-800">
-          TastyFood
-          <span class="text-yellow-400">.</span>
+          TastyFood<span class="text-yellow-400 hover:text-red-400">.</span>
         </h1>
       </router-link>
     </div>

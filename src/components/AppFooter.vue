@@ -1,7 +1,7 @@
 <template>
-  <footer class="bg-[#fffcee] py-12">
+  <footer class="bg-[#fffcee] py-12 mt-auto">
     <div
-      class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 mt-[120px]"
+      class="max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8 mt-[30px]"
     >
       <!-- Column 1 -->
       <div>
@@ -15,7 +15,7 @@
         </ul>
       </div>
 
-      <!-- Column 2 -->
+      <!-- Section -->
       <div>
         <h4 class="font-bold mb-4">Section</h4>
         <ul class="space-y-2 text-sm">
@@ -26,7 +26,7 @@
         </ul>
       </div>
 
-      <!-- Column 3 -->
+      <!-- Resource -->
       <div>
         <h4 class="font-bold mb-4">Resource</h4>
         <ul class="space-y-2 text-sm">
@@ -37,7 +37,7 @@
         </ul>
       </div>
 
-      <!-- Column 4: Newsletter -->
+      <!-- Newsletter -->
       <div>
         <h4 class="font-bold mb-4">Subscribe to our newsletter</h4>
         <p class="text-sm text-gray-600 mb-4">
