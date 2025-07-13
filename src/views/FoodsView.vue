@@ -9,8 +9,10 @@
     />
 
     <FoodItem
+      v-else
       :titleContainer="titleContainer"
-      :foodList="recipeStore.recipeByName"
+      :titleClass="'font-bold text-center text-gray-800 m-8'"
+      :foods="recipeStore.recipeByName || {}"
       imageFood="strMealThumb"
       nameFood="strMeal"
       otherInformationFood="strInstructions"
@@ -22,7 +24,7 @@
 </template>
 
 <script setup>
-import { onMounted, computed, ref, watchEffect } from "vue";
+import { computed, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useRecipeStore } from "../stores/recipes";
 import FoodItem from "../components/FoodItem.vue";
@@ -31,15 +33,23 @@ import FoodModal from "../components/FoodModal.vue";
 
 const recipeStore = useRecipeStore();
 const route = useRoute();
-const searchedFood = route.params.nameFood;
+const searchedFood = computed(() => route.params.nameFood);
 const loading = ref(false);
 const selectedFood = ref({});
 const isOpen = ref(false);
-const titleContainer = computed(() =>
-  recipeStore.recipeByName
-    ? `Encontrado ${recipeStore.recipeByName?.length} com a pesquisa ${searchedFood}`
-    : "Nada encontrado"
-);
+const titleContainer = computed(() => {
+  const searchTerm = searchedFood.value;
+  const totalRecipesByName = recipeStore.recipeByName?.length;
+
+  if (!totalRecipesByName)
+    return searchTerm
+      ? `No results found for "${searchTerm}"`
+      : "No results found"; // Fallback for empty search
+
+  return totalRecipesByName > 1
+    ? `${totalRecipesByName} results found for ${searchTerm}`
+    : `${totalRecipesByName} item found for ${searchTerm}`;
+});
 
 function openModal(food) {
   selectedFood.value = {
@@ -57,21 +67,18 @@ const closeModal = () => {
   isOpen.value = false;
 };
 
-onMounted(async () => {
+const fetchData = async (term) => {
   loading.value = true;
-  await recipeStore.getRecipeByName(searchedFood);
+  await recipeStore.getRecipeByName(term);
   loading.value = false;
-});
+};
 
-// watchEffect(() => {
-//   if (isOpen.value) {
-//     document.body.style.paddingRight = `${
-//       window.innerWidth - document.documentElement.clientWidth
-//     }px`;
-//     document.body.classList.add("overflow-hidden");
-//   } else {
-//     document.body.style.paddingRight = "";
-//     document.body.classList.remove("overflow-hidden");
-//   }
-// });
+fetchData(route.params.nameFood);
+
+watch(
+  () => route.params.nameFood,
+  (newTerm) => {
+    fetchData(newTerm);
+  }
+);
 </script>
