@@ -6,7 +6,7 @@
       v-model="searchRecipeTerm"
       type="text"
       placeholder="Search any food"
-      class="px-4 py-2 flex-1 text-gray-700 focus:rounded-l-lg focus:outline-sky-500"
+      class="px-4 py-2 flex-1 text-gray-700 focus:rounded-l-lg focus:outline-yellow-400"
     />
     <button
       type="button"
