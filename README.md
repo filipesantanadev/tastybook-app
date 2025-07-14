@@ -25,6 +25,7 @@ A simple and responsive recipe application built with **Vue 3**, **Pinia**, **Ta
 - [Vue Router](https://router.vuejs.org/)
 - [Axios](https://axios-http.com/)
 - [TheMealDb API](https://www.themealdb.com/api.php)
+- [LocalStorage](<(https://v2.vuejs.org/v2/cookbook/client-side-storage.html?redirect=true)>)
 
 ---
 
@@ -76,13 +77,11 @@ Open your browser at http://localhost:3000 (or the port shown) to explore the ap
 ## 📝 Usage
 
 ```
-Browse recipe categories on the homepage.
-
-Click a category to see related recipes.
+Browse my favorites recipes on the homepage.
 
 Search recipes by name on the Foods page.
 
-Click a recipe to view detailed info with image and description.
+Click on a recipe to view detailed info with an image and description on the Homepage or Foods page
 
 Enjoy smooth loading feedback with spinner animations.
 ```
